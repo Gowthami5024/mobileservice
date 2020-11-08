@@ -27,6 +27,13 @@ public interface UserService {
 
 	User addUser(User user);
 	
+	/**
+	 * 
+	 * @param user
+	 * @return
+	 */
+	User getUserDetails(Long requestId);
+	
 	
 
 }

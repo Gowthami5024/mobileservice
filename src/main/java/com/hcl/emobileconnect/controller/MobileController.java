@@ -30,9 +30,9 @@ public class MobileController {
 	public User createUser(@RequestBody User user) {
 		return userService.addUser(user);
 	}
-
 	
-	@GetMapping(value="/user/{id}",  consumes = "application/json", produces = "application/json")
+		
+	@GetMapping(value="/userStatus/{id}",  consumes = "application/json", produces = "application/json")
 	@ResponseBody
 	public String getRequestStatus(@PathVariable Long id){
 		return userService.getRequestStatus(id);
@@ -41,6 +41,11 @@ public class MobileController {
 	@GetMapping(value="/admin/all", consumes = "application/json", produces = "application/json")
 	public @ResponseBody List<User> getAllUser(){
 		return userService.getAllUser();
+	}
+	
+	@GetMapping(value="/admin/{id}", consumes = "application/json", produces = "application/json")
+	public @ResponseBody User getUser(@PathVariable Long id){
+		return userService.getUserDetails(id);
 	}
 
 }

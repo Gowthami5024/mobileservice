@@ -39,5 +39,20 @@ public class UserServiceImpl implements UserService {
 
 		return user;
 	}
+	
+	/**
+	 * 
+	 * @param user
+	 * @return
+	 */
+	@Override
+	public User getUserDetails(Long requestId) {
+		User user = userRepositry.getOne(requestId);
+		if(user != null) {
+			return user;
+		}else {
+			throw new UserNotFoundException("No Record Found");
+		}
+	}
 
 }
