@@ -11,11 +11,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
  * @author Gowthami V
  *
  */
-@SpringBootApplication(exclude = {
-	    DataSourceAutoConfiguration.class, 
-	    DataSourceTransactionManagerAutoConfiguration.class, 
-	    HibernateJpaAutoConfiguration.class
-	})
+@SpringBootApplication
 public class MoblileServiceApp{
 	
 	public static void main(String[] args) {
