@@ -23,13 +23,10 @@ public interface UserService {
 	 * @return
 	 */
 	String getRequestStatus(Long requestId);
-	
 
-	User addUser(User user);
-	
 	/**
 	 * 
-	 * @param user
+	 * @param requestId
 	 * @return
 	 */
 	User getUserDetails(Long requestId);

@@ -33,16 +33,9 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 	
-	@Override
-	public User addUser(User user) {
-		userRepositry.save(user);
-
-		return user;
-	}
-	
 	/**
 	 * 
-	 * @param user
+	 * @param requestId
 	 * @return
 	 */
 	@Override
