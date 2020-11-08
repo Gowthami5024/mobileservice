@@ -19,12 +19,26 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 	
+	/**
+	 * @param requestId
+	 * @return Status String
+	 */
+	@Override
 	public String getRequestStatus(Long requestId) {
 		User user = userRepositry.getOne(requestId);
 		if(user != null) {
 			return user.getStatus().name();
 		}
 		return null;
+	}
+	
+	/**
+	 * 
+	 * @return User list
+	 */
+	@Override
+	public List<User> getAllUserList(){
+		return userRepositry.findAll();
 	}
 
 }

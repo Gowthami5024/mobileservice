@@ -20,6 +20,12 @@ public interface UserService {
 	 */
 	String getRequestStatus(Long requestId);
 	
+	/**
+	 * 
+	 * @return
+	 */
+	List<User> getAllUserList();
+	
 	
 
 }
