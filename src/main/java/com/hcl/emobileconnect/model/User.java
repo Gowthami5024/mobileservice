@@ -53,7 +53,7 @@ public class User {
 	private String newPhoneNo;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(foreignKey = @ForeignKey(name = "doc_id"), name = "doc_idid")
+    @JoinColumn(foreignKey = @ForeignKey(name = "doc_id"), name = "doc_id")
     private UserDocDetails documents;	
 	
 }
