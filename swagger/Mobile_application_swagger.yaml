@@ -1,0 +1,188 @@
+---
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: "Swagger Mobile Application"
+  description: "This application gives the capability for the accepting and approving sim for new applications."
+paths:
+  /users:
+    post:
+      summary: "Create a user"
+      description: "Create a user"
+      consumes:
+       - "application/json"
+      produces:
+       - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User object that needs to be created"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "201":
+          description: "Created"
+        "405":
+          description: "Invalid Input"
+  /users/{requestId}/uploadDocument:
+    post:
+      summary: "Upload documents"
+      description: ""
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "requestId"
+        in: "path"
+        description: "requestID of user to upload"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "file"
+        in: "formData"
+        description: "file to upload"
+        required: true
+        type: "file"
+      responses:
+        "200":
+          description: "successful operation"
+  /admin/{requestId}:
+    get:
+      summary: "Get a single of user"
+      description: "Acces the user applied for the new mobile connection"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "requestId"
+        in: "path"
+        description: "ID of user to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "success"
+          schema:
+            $ref: "#/definitions/User"
+    put:
+      summary: "Update the user status"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "requestId"
+        in: "path"
+        description: "ID of user to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "User object that needs to be created"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "204":
+          description: "Updated"
+        "405":
+          description: "Invalid Input"
+  /admin/{requestId}/assign:
+    post:
+      summary: "Update the new mobile number for user"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "requestId"
+        in: "path"
+        description: "ID of user to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "User object that needs to be created"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "201":
+          description: "Updated"
+        "405":
+          description: "Invalid Input"
+  /admin/requests:
+    get:
+      summary: "Get a list of users"
+      description: "Acces the list of users applied for the new mobile connection"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+  /user/{requestId}:
+    get:
+      summary: "Track the status"
+      description: "Track the status of the application"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "requestId"
+        in: "path"
+        description: "tracking ID of user"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "success"
+          schema:
+            $ref: "#/definitions/Status"
+definitions:
+  User:
+    type: "object"
+    required:
+    - phoneNumber
+    - email
+    properties:
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      address:
+        type: "string"
+      phoneNumber:
+        type: "string"
+      newPhoneNumber:
+        type: "string"
+      status:
+        $ref: "#/definitions/Status"
+      plan:
+        $ref: "#/definitions/Plan"
+
+  Status:
+    type: "string"
+    description: "Mobile application status"
+    enum:
+    - "In Progress"
+    - "Approved"
+    - "Rejected"
+    - "Refer Back"
+    - "Connection Enabled"
+  Plan:
+    type: "string"
+    description: "Types of plans available"
+    enum:
+    - "plan 1"
+    - "plan 2"
+    - "plan 3"
