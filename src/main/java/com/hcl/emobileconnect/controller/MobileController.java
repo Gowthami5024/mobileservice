@@ -32,20 +32,20 @@ public class MobileController {
 	}
 	
 		
-	@GetMapping(value="/userStatus/{id}",  consumes = "application/json", produces = "application/json")
+	@GetMapping(value="/userStatus/{requestId}",  consumes = "application/json", produces = "application/json")
 	@ResponseBody
-	public String getRequestStatus(@PathVariable Long id){
-		return userService.getRequestStatus(id);
+	public String getRequestStatus(@PathVariable Long requestId){
+		return userService.getRequestStatus(requestId);
 	}
 	
-	@GetMapping(value="/admin/all", consumes = "application/json", produces = "application/json")
+	@GetMapping(value="/admin/requests", consumes = "application/json", produces = "application/json")
 	public @ResponseBody List<User> getAllUser(){
 		return userService.getAllUser();
 	}
 	
-	@GetMapping(value="/admin/{id}", consumes = "application/json", produces = "application/json")
-	public @ResponseBody User getUser(@PathVariable Long id){
-		return userService.getUserDetails(id);
+	@GetMapping(value="/admin/{requestId}", consumes = "application/json", produces = "application/json")
+	public @ResponseBody User getUser(@PathVariable Long requestId){
+		return userService.getUserDetails(requestId);
 	}
 
 }

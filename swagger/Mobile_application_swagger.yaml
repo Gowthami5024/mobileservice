@@ -128,7 +128,7 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/User"
-  /user/{requestId}:
+  /userStatus/{requestId}:
     get:
       summary: "Track the status"
       description: "Track the status of the application"
