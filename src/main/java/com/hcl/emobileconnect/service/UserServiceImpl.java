@@ -41,8 +41,11 @@ public class UserServiceImpl implements UserService {
 		return userRepositry.findAll();
 	}
 
-	@Override public User addUser(User user) {
-		return null;
+	@Override
+	public User addUser(User user) {
+		userRepositry.save(user);
+
+		return user;
 	}
 
 }

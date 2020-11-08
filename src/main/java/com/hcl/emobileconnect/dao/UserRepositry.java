@@ -11,4 +11,6 @@ import com.hcl.emobileconnect.model.User;
 public interface UserRepositry extends JpaRepository<User, Long> {
 	
 	List<User> findByStatus(String status);
+
+	User createUser(User user);
 }
