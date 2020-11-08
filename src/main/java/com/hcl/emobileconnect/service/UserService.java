@@ -11,6 +11,15 @@ import com.hcl.emobileconnect.model.User;
  */
 public interface UserService {
 	
-	public List<User> getAllUser();
+	List<User> getAllUser();
+	
+	/**
+	 * 
+	 * @param requestId
+	 * @return
+	 */
+	String getRequestStatus(Long requestId);
+	
+	
 
 }
