@@ -25,6 +25,8 @@ public interface UserService {
 	 * @return
 	 */
 	List<User> getAllUserList();
+
+	User addUser(User user);
 	
 	
 
