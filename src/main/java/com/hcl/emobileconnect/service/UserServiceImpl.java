@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hcl.emobileconnect.dao.UserRepositry;
+import com.hcl.emobileconnect.exception.UserNotFoundException;
 import com.hcl.emobileconnect.model.User;
 
 @Service
@@ -15,8 +16,7 @@ public class UserServiceImpl implements UserService {
 	UserRepositry userRepositry;
 
 	public List<User> getAllUser() {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepositry.findAll();
 	}
 	
 	/**
@@ -28,19 +28,11 @@ public class UserServiceImpl implements UserService {
 		User user = userRepositry.getOne(requestId);
 		if(user != null) {
 			return user.getStatus().name();
+		}else {
+			throw new UserNotFoundException("No Record Found");
 		}
-		return null;
 	}
 	
-	/**
-	 * 
-	 * @return User list
-	 */
-	@Override
-	public List<User> getAllUserList(){
-		return userRepositry.findAll();
-	}
-
 	@Override
 	public User addUser(User user) {
 		userRepositry.save(user);

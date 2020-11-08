@@ -25,8 +25,8 @@ public class MobileServiceExceptionHandler extends ResponseEntityExceptionHandle
 	    return new ResponseEntity<ExceptionResponse>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	  }
 
-	  @ExceptionHandler(MobileServiceException.class)
-	  public final ResponseEntity<ExceptionResponse> handleUserNotFoundException(MobileServiceException ex, WebRequest request) {
+	  @ExceptionHandler(UserNotFoundException.class)
+	  public final ResponseEntity<ExceptionResponse> handleUserNotFoundException(UserNotFoundException ex, WebRequest request) {
 	    ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
 	        request.getDescription(false));
 	    return new ResponseEntity<ExceptionResponse>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
